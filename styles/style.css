@@ -14,8 +14,102 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--main-font, sans-serif);
-  font-variation-settings: 'wght' var(--font-weight-text, 410);
+  font-variation-settings: "wght" var(--font-weight-text, 410);
   background-image: var(--gradient);
   background-size: cover;
-  background-attachment:fixed;
+  background-attachment: fixed;
+  padding: 0 clamp(0rem, -8.1426rem + 34.7418vw, 23.125rem);
+}
+
+.width-container {
+  inline-size: var(--responsive-width);
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #fff;
+  margin-top: 100px;
+  padding: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem)
+    clamp(1rem, -1.3438rem + 10vw, 7.65625rem);
+  border: 2px solid var(--main-color, #000);
+}
+
+.header__logo {
+  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-weight: var(--accent-font-weigh, 400);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-transform: uppercase;
+  color: var(--main-color, #000);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header__title {
+  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-weight: var(--accent-font-weigh, 400);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+  color: var(--main-color, #000);
+  text-align: center;
+}
+
+.main {
+  margin-top: 100px;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px solid var(--main-color, #000);
+}
+
+.card__title {
+  font-family: var(--main-font, "Inter-Variable", sans-serif);
+  font-variation-settings: "wght" var(--font-weight-title, 715);
+  font-size: 18px;
+  color: var(--main-color, #000);
+  margin: 4px 10px;
+}
+
+.card__photo {
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  gap: 25px;
+}
+
+.card__text-paragraph {
+  font-family: var(--main-font, "Inter-Variable", sans-serif);
+  font-variation-settings: "wght" var(--font-weight-text, 410);
+  font-size: 18px;
+  color: var(--main-color, #000);
+}
+
+.card__like-button {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+  background-color: transparent;
+  border: none; 
+  align-self: flex-end;
+}
+
+.button__text {
+  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-weight: var(--accent-font-weigh, 400);
+  font-size: 14px;
+  border: 2px solid var(--main-color);
+  padding: 12.5px 37px;
+  display: inline-block;
 }
