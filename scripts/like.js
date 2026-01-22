@@ -39,3 +39,4 @@ function setButtonText(heart, button) {
     );
   }
 }
+

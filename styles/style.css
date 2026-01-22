@@ -23,12 +23,11 @@
 
 .width-container {
   inline-size: var(--responsive-width);
-  margin: 0 auto;
 }
 
 .header {
   background-color: #fff;
-  margin-top: 100px;
+  margin-top: 97px;
   padding: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem)
     clamp(1rem, -1.3438rem + 10vw, 7.65625rem);
   border: 2px solid var(--main-color, #000);
@@ -76,17 +75,50 @@
   margin: 4px 10px;
 }
 
+.card__image-container {
+  position: relative;
+}
+
 .card__photo {
   inline-size: 100%;
   object-fit: cover;
   object-position: center;
+  display: block;
+  overflow: hidden;
+}
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-weight: var(--accent-font-weigh, 400);
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--main-color);
+  opacity: 50%;
+  mix-blend-mode: hard-light;
+  text-shadow:
+    1px 0 0 var(--accent-color),
+    -1px 0 0 var(--accent-color),
+    0 1px 0 var(--accent-color),
+    0 -1px 0 var(--accent-color);
+}
+
+@supports (text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--accent-color);
+    text-stroke: 1px var(--accent-color);
+    text-shadow: none;
+  }
 }
 
 .card__content {
   display: flex;
   flex-direction: column;
-  padding: 25px;
-  gap: 25px;
+  justify-content: center;
+  padding: 22px 25px 23px;
+  gap: 24px;
 }
 
 .card__text-paragraph {
@@ -99,17 +131,101 @@
 .card__like-button {
   display: flex;
   align-items: center;
-  gap: 12px; 
+  gap: 12px;
   background-color: transparent;
-  border: none; 
+  border: none;
   align-self: flex-end;
+}
+
+.card__like-button .button__text {
+  border: 2px solid var(--main-color);
+  padding: 10px 35px;
+  display: inline-block;
+  margin-right: -5px;
 }
 
 .button__text {
   font-family: var(--accent-font, "PressStart2P", monospace);
   font-weight: var(--accent-font-weigh, 400);
   font-size: 14px;
-  border: 2px solid var(--main-color);
-  padding: 12.5px 37px;
+  text-align: center;
+}
+
+.memory-save-button {
+  background-color: var(--accent-color, #fff);
+  margin-top: 55px;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  border: 2px solid var(--main-color, #000);
+  padding: 15px 20px;
+  gap: 8px;
+}
+
+.card__icon {
+  inline-size: 21px;
+  block-size: 21px;
+}
+
+.modal {
+  border: 2px solid var(--main-color, #000);
+  background: var(--accent-color, #fff);
+  inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  min-block-size: 191px;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: 36%;
+}
+
+.modal[open] {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 30px;
+  padding: 30px;
+}
+
+.modal__content {
+  grid-row: 1 / 2;
+  display: grid;
+  grid-template-columns: 39px auto;
+  gap: 20px;
+}
+
+.modal .card__icon {
+  grid-column: 1/2;
+  inline-size: 39px;
+  block-size: 39px;
+  align-self: center;
+}
+
+.modal__title {
+  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-size: 14px;
+  font-weight: var(--accent-font-weigh, 400);
+  line-height: 150%;
+  text-transform: uppercase;
   display: inline-block;
+  grid-column: 2/3;
+}
+
+.modal[open] form {
+  grid-row: 2 / 3;
+  justify-self: center;
+  width: auto;
+  display: inline-block;
+}
+
+.modal .modal__button {
+  margin: 0;
+  padding: 12.5px 132.5px;
+  border: var(--main-color, #000) 2px solid;
+  box-sizing: border-box;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media (width <= 375px) {
+  
 }

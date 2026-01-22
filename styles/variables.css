@@ -10,5 +10,7 @@
     linear-gradient(180deg, #e7e7e7 0.01%, #1a1a1a);
   --responsive-width:clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.7500rem);
   --main-color: #000;
+  --accent-color: #fff;
+  
 
 }
