@@ -87,6 +87,34 @@
   overflow: hidden;
 }
 
+.contrast {
+  filter: contrast(1.1);
+}
+
+.sepia {
+  filter: sepia(50%);
+}
+
+.brightness {
+  filter: brightness(1.2);
+}
+
+.hue-rotate {
+  filter: hue-rotate(-30deg);
+}
+
+.saturate {
+  filter: saturate(1.5);
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+.multiple {
+  filter: saturate(1.7) brightness(0.9) hue-rotate(-5deg);
+}
+
 .card__label {
   position: absolute;
   top: 25px;
@@ -117,7 +145,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 22px 25px 23px;
+  padding: 22px 25px 0;
   gap: 24px;
 }
 
@@ -128,20 +156,62 @@
   color: var(--main-color, #000);
 }
 
-.card__like-button {
+.card__buttons {
+  padding: 0 25px 23px;
+  margin-top: 24px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 12px;
-  background-color: transparent;
-  border: none;
-  align-self: flex-end;
+  background-color: #fff;
 }
 
-.card__like-button .button__text {
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+}
+
+.card__like-button {
+  background-color: #fff;
   border: 2px solid var(--main-color);
+  align-self: flex-end;
+  transition: box-shadow 0.3s ease;
   padding: 10px 35px;
   display: inline-block;
   margin-right: -5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.card__like-button .button__text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.card__like-button::before {
+  content: "";
+  background-color: #000;
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.card__like-button:focus {
+  outline: none;
+}
+
+.card__like-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--main-color);
+}
+
+.card__like-button:hover::before {
+  transform: scaleX(1);
 }
 
 .button__text {
@@ -149,6 +219,10 @@
   font-weight: var(--accent-font-weigh, 400);
   font-size: 14px;
   text-align: center;
+}
+
+.memory-save {
+  margin-bottom: 100px;
 }
 
 .memory-save-button {
@@ -160,6 +234,33 @@
   border: 2px solid var(--main-color, #000);
   padding: 15px 20px;
   gap: 8px;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.memory-save-button::before {
+  content: "";
+  background-color: var(--main-color);
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.memory-save-button:focus {
+  outline: none;
+}
+
+.memory-save-button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--main-color);
+}
+
+.memory-save-button:hover::before {
+  transform: scaleX(1);
 }
 
 .card__icon {
@@ -172,16 +273,15 @@
   background: var(--accent-color, #fff);
   inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
   min-block-size: 191px;
-  overflow: hidden;
   margin-right: auto;
-  margin-left: 36%;
+  margin-left: clamp(1.0625rem, -10.5242rem + 49.4366vw, 33.96875rem);
 }
 
 .modal[open] {
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 30px;
-  padding: 30px;
+  padding: 30px 37px;
 }
 
 .modal__content {
@@ -215,17 +315,52 @@
   display: inline-block;
 }
 
-.modal .modal__button {
+.modal__button {
   margin: 0;
-  padding: 12.5px 132.5px;
+  padding: 9px 114px;
   border: var(--main-color, #000) 2px solid;
   box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.modal__button::before {
+  content: "";
+  background-color: var(--main-color, #000);
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.modal__button:focus {
+  outline: none;
+}
+
+.modal__button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--main-color);
+}
+
+.modal__button:hover::before {
+  transform: scaleX(1);
 }
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-@media (width <= 375px) {
-  
+@media (width <= 376px) {
+  .memory-save-button {
+    flex-direction: column;
+    margin-top: 53px;
+  }
+
+  .card__icon {
+    inline-size: 28px;
+    block-size: 28px;
+  }
 }
