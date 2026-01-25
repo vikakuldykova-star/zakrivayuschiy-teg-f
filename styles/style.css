@@ -18,7 +18,7 @@
   background-image: var(--gradient);
   background-size: cover;
   background-attachment: fixed;
-  padding: 0 clamp(0rem, -8.1426rem + 34.7418vw, 23.125rem);
+  padding-inline: clamp(0rem, -8.1426rem + 34.7418vw, 23.125rem);
 }
 
 .width-container {
@@ -27,23 +27,24 @@
 
 .header {
   background-color: #fff;
-  margin-top: 97px;
-  padding: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem) clamp(1rem, -1.3438rem + 10vw, 7.65625rem);
+  margin-block-start: 100px;
+  padding: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem)
+    clamp(1rem, -1.3438rem + 10vw, 7.65625rem);
   border: 2px solid var(--main-color, #000);
 }
 
 .header__logo {
-  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-family: var(--accent-font, "PressStart2P", fantasy);
   font-weight: var(--accent-font-weigh, 400);
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-transform: uppercase;
   color: var(--main-color, #000);
   text-align: center;
-  margin-bottom: 20px;
+  margin-block-end: 18px;
 }
 
 .header__title {
-  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-family: var(--accent-font, "PressStart2P", fantasy);
   font-weight: var(--accent-font-weigh, 400);
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   text-transform: uppercase;
@@ -52,7 +53,7 @@
 }
 
 .main {
-  margin-top: 100px;
+  margin-block-start: 100px;
 }
 
 .cards-list {
@@ -84,6 +85,7 @@
   object-position: center;
   display: block;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .contrast {
@@ -118,7 +120,7 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-family: var(--accent-font, "PressStart2P", fantasy);
   font-weight: var(--accent-font-weigh, 400);
   font-size: 14px;
   text-transform: uppercase;
@@ -157,7 +159,7 @@
 
 .card__buttons {
   padding: 0 25px 23px;
-  margin-top: 25px;
+  margin-block-start: 25px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -171,7 +173,7 @@
   transition: border-color 0.3s ease;
   padding: 0;
   cursor: pointer;
-  margin-bottom: 4px;
+  margin-block-end: 4px;
 }
 
 .like-icon {
@@ -257,30 +259,23 @@
   border-color: rgba(0, 0, 0, 1);
 }
 
-.card__like-button {
-  background-color: var(--accent-color, #fff);
-  border: 2px solid var(--main-color);
-  align-self: flex-end;
+.button {
+ background-color: var(--accent-color, #fff);
+  border: 2px solid var(--main-color, #000); 
   transition: box-shadow 0.3s ease;
-  margin-bottom: 4px;
-  display: inline-block;
   position: relative;
   overflow: hidden;
-  z-index: 0;
   cursor: pointer;
-  inline-size: 130px;
-  block-size: 38px;
-  text-align: center;
 }
 
-.card__like-button .button__text {
+.button .button__text {
   position: relative;
   z-index: 2;
-  color: var(--accent-color, #fff);
   mix-blend-mode: difference;
+  color: var(--accent-color, #fff);
 }
 
-.card__like-button::before {
+.button::before {
   content: "";
   background-color: var(--main-color, #000);
   position: absolute;
@@ -291,48 +286,46 @@
   z-index: 1;
 }
 
-.card__like-button:focus {
+.button:focus {
   outline: none;
 }
 
-.card__like-button:focus-visible {
-  box-shadow: 2px 2px 0 var(--main-color);
+.button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--main-color, #000);
 }
 
-.card__like-button:hover::before {
+.button:hover::before {
   transform: scaleX(1);
 }
 
+.card__like-button {
+  align-self: flex-end;
+  margin-block-end: 4px;
+  display: inline-block;
+  z-index: 0;
+  inline-size: 130px;
+  block-size: 38px;
+}
+
 .button__text {
-  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-family: var(--accent-font, "PressStart2P", fantasy);
   font-weight: var(--accent-font-weigh, 400);
   font-size: 14px;
   text-align: center;
 }
 
 .memory-save {
-  margin-bottom: 100px;
+  margin-block-end: 100px;
 }
 
 .memory-save-button {
-  background-color: var(--accent-color, #fff);
-  margin-top: 55px;
+  margin-block-start: 55px;
   display: flex;
   justify-self: center;
   align-items: center;
-  border: 2px solid var(--main-color, #000);
   padding: 15px 20px;
   gap: 8px;
-  transition: box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.memory-save-button .button__text {
-  position: relative;
-  z-index: 2;
-  color: var(--accent-color, #fff);
-  mix-blend-mode: difference;
 }
 
 .memory-save-button .card__icon {
@@ -340,30 +333,6 @@
   z-index: 2;
   mix-blend-mode: difference;
   color: var(--accent-color, #fff);
-}
-
-.memory-save-button::before {
-  content: "";
-  background-color: var(--main-color, #000);
-  position: absolute;
-  inset: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-  z-index: 1;
-}
-
-.memory-save-button:focus {
-  outline: none;
-}
-
-.memory-save-button:focus-visible {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--main-color, #000);
-}
-
-.memory-save-button:hover::before {
-  transform: scaleX(1);
 }
 
 .card__icon {
@@ -375,9 +344,8 @@
   border: 2px solid var(--main-color, #000);
   background: var(--accent-color, #fff);
   inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
-  min-block-size: 191px;
-  margin-right: auto;
-  margin-left: clamp(1.0625rem, -10.5242rem + 49.4366vw, 33.96875rem);
+  margin-inline-end: auto;
+  margin-inline-start: clamp(1.0625rem, -10.5242rem + 49.4366vw, 33.96875rem);
 }
 
 .modal[open] {
@@ -402,7 +370,7 @@
 }
 
 .modal__title {
-  font-family: var(--accent-font, "PressStart2P", monospace);
+  font-family: var(--accent-font, "PressStart2P", fantasy);
   font-size: 14px;
   font-weight: var(--accent-font-weigh, 400);
   line-height: 150%;
@@ -421,42 +389,12 @@
 .modal__button {
   margin: 0;
   padding: 9px 114px;
-  border: var(--main-color, #000) 2px solid;
   box-sizing: border-box;
-  transition: box-shadow 0.3s ease;
-  position: relative;
   z-index: 1;
 }
 
 .modal__button .button__text {
-  position: relative;
-  z-index: 2;
-  mix-blend-mode: difference;
-  color: var(--accent-color, #fff);
-}
-
-.modal__button::before {
-  content: "";
-  background-color: var(--main-color, #000);
-  position: absolute;
-  inset: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-  z-index: 2;
-}
-
-.modal__button:focus {
-  outline: none;
-}
-
-.modal__button:focus-visible {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--main-color);
-}
-
-.modal__button:hover::before {
-  transform: scaleX(1);
+  text-transform: uppercase;
 }
 
 .modal::backdrop {
@@ -466,7 +404,7 @@
 @media (width <= 376px) {
   .memory-save-button {
     flex-direction: column;
-    margin-top: 53px;
+    margin-block-start: 53px;
   }
 
   .card__icon {
